@@ -9,7 +9,7 @@ set -u
 #set -x
 
 server() {
-  if [ "${1:-false}" == "true" ]; then
+  if [ "${1}" = "true" ]; then
     echo 'https://acme-staging.api.letsencrypt.org/directory'
   else
     echo 'https://acme-v01.api.letsencrypt.org/directory'
@@ -20,7 +20,7 @@ exec lego \
 --accept-tos \
 --dns=ovh \
 --email="${EMAIL-hostmaster@${DOMAIN}}" \
---server="$(server "${STAGING}")" \
+--server="$(server "${STAGING:-false}")" \
 --domains="${DOMAIN}" \
 --key-type=rsa4096 \
 --path '/target' \
