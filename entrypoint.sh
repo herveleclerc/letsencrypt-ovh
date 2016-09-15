@@ -9,7 +9,7 @@ set -u
 #set -x
 
 server() {
-  if [ "${1:-false}" == "true" ]; then
+  if [ "${1:-false}" = "true" ]; then
     echo 'https://acme-staging.api.letsencrypt.org/directory'
   else
     echo 'https://acme-v01.api.letsencrypt.org/directory'
